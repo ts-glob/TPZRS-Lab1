@@ -1,17 +1,12 @@
-import java.net.Socket;
-import java.io.OutputStream;
-import java.io.DataOutputStream;
-
+import javax.net.ssl.SSLServerSocketFactory;
+import java.net.ServerSocket;
 
 public class Server {
     public static void main(String args[]) throws Exception {
-        Socket sock = new Socket("127.0.0.1", 5000);
-        String message1 = "Лёха, принимай!";
-        OutputStream ostream = sock.getOutputStream();
-        DataOutputStream dos = new DataOutputStream(ostream);
-        dos.writeBytes(message1);
-        dos.close();
-        ostream.close();
-        sock.close();
+        System.setProperty("javax.net.ssl.keyStore", "test.jks");
+        System.setProperty("javax.net.ssl.keyStorePassword", "qwerty");
+        ServerSocket serverSocket = ((SSLServerSocketFactory)SSLServerSocketFactory.getDefault()).createServerSocket(4444);
+        System.out.println("Server up & ready for connections...");
+        while (true) new ServerThread(serverSocket.accept()).start();
     }
 }
