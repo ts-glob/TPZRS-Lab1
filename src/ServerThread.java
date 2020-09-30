@@ -19,8 +19,9 @@ public class ServerThread extends Thread {
             System.out.println("user '" + bufferedReader.readLine() + "' is now connected to the server.");
             while (true) {
                 printWriter.println("Server receiving the data...");
-                int length = bufferedReader.read();
+                int length = in.readInt();
                 byte[] data = null;
+                System.out.println("receiving " + length +" bytes...");
                 if (length > 0) {
                     data = new byte[length];
                     for (int i = 0; i <= length / 10000; i++) {
@@ -35,7 +36,7 @@ public class ServerThread extends Thread {
                 ByteArrayInputStream bis = new ByteArrayInputStream(data);
                 BufferedImage bImage2 = ImageIO.read(bis);
                 ImageIO.write(bImage2, "jpg", new File("output.jpg"));
-                System.out.println(ANSI_GREEN + "image has been created!" + ANSI_RESET);
+                System.out.println(ANSI_GREEN + "image has been transported!" + ANSI_RESET);
                 break;
             }
         } catch (IOException e) {
