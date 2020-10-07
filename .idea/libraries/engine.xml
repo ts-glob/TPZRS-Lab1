@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="engine">
     <CLASSES>
-      <root url="jar://D:/Programm Files/Matlab R2016b/extern/engines/java/jar/engine.jar!/" />
+      <root url="jar://$PROJECT_DIR$/engine.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

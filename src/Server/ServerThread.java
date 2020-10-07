@@ -1,3 +1,5 @@
+package Server;
+
 import MatlabInJava.MatlabInJava;
 
 import javax.imageio.ImageIO;
